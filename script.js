@@ -159,6 +159,43 @@ timelineItems.forEach(item => {
     timelineObserver.observe(item);
 });
 
+// Certificate lightbox functionality
+const certificateCards = document.querySelectorAll('.certificate-card');
+certificateCards.forEach(card => {
+    card.addEventListener('click', function() {
+        const img = this.querySelector('img');
+        const lightbox = document.createElement('div');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = `
+            <div class="lightbox-content">
+                <span class="lightbox-close">&times;</span>
+                <img src="${img.src}" alt="${img.alt}">
+            </div>
+        `;
+        document.body.appendChild(lightbox);
+        
+        // Close lightbox
+        const closeBtn = lightbox.querySelector('.lightbox-close');
+        closeBtn.addEventListener('click', () => {
+            lightbox.remove();
+        });
+        
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                lightbox.remove();
+            }
+        });
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+        
+        // Remove lightbox and restore scroll
+        lightbox.addEventListener('click', () => {
+            document.body.style.overflow = 'auto';
+        });
+    });
+});
+
 // Console message
 console.log('%c👋 Hello! Welcome to Rimarch Dizon\'s Resume', 'color: #667eea; font-size: 20px; font-weight: bold;');
 console.log('%cInterested in working together? Let\'s connect!', 'color: #764ba2; font-size: 14px;');
