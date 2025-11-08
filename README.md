@@ -93,3 +93,6 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 **© 2024 Rimarch Dizon. All rights reserved.**
+
+## Live Demo
+Visit: https://rimarch.github.io/RimarchDizon-Resume/
